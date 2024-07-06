@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Cinta untuk Siska Zalianti</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #444;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            z-index: 1;
+            background-color: #f8f9fa;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .header {
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-bottom: 2px solid #00dffc;
+        }
+
+        .header h1 {
+            margin: 0;
+            overflow: hidden;
+            border-right: .15em solid #00dffc;
+            white-space: nowrap;
+            animation: typing 3.5s steps(60, end), blink-caret .75s step-end infinite;
+            font-size: 2.5em; /* Default font size */
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                animation: typing 5s steps(40, end), blink-caret .75s step-end infinite;
+                font-size: 2em; /* Adjust font size for tablets */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                animation: typing 6s steps(30, end), blink-caret .75s step-end infinite;
+                font-size: 1.5em; /* Adjust font size for mobile */
+            }
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .section {
+            margin: 20px 0;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 10px;
+            border: 5px solid #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            margin: 20px 0;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        form input {
+            padding: 10px;
+            margin-bottom: 20px;
+            width: calc(100% - 22px);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            padding: 10px 20px;
+            background-color: #00dffc;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #00c3ff;
+        }
+
+        #savedDate {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        #countdown {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        span {
+            font-size: 1em;
+            font-weight: bold;
+            background: linear-gradient(to right, #ee0979, skyblue);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 20s infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+            from, to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: #00dffc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Surat Cinta untuk <span class="gradient-text">Siska Zalianti</span></h1>
+    </div>
+    <div class="container">
+        <div class="section">
+            <h2>Pengantar</h2>
+            <p>Hai sayangku, selamat datang di tempat gabut dan isengku, website ini aku dedikasikan untuk memperingati hari jadi kita yang sebentar lagi akan menginjak usia 2 tahun, tidak terasa sudah mau 2 tahun kita bersama, semoga kita akan terus bersama, Aamiin.</p>
+        </div>
+        <div class="section">
+            <h2>MASUKAN TANGGAL HARI JADI</h2>
+            <form id="anniversaryForm">
+                <div class="form-group">
+                    <label for="anniversaryDate"></label>
+                    <input type="date" class="form-control" id="anniversaryDate" name="anniversaryDate" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </form>
+            <p id="savedDate"></p>
+        </div>
+        <div class="section" id="countdownSection" style="display:none;">
+            <h2>Oiya aku sekarang inget hahahaha!</h2>
+            <p id="countdown"></p>
+        </div>
+        <div class="section">
+            <h2>Surat Cinta</h2>
+            <p>Dear Chika,</p>
+            <p>Chika ku yang tercinta, di setiap detik yang berlalu, cintaku padamu semakin dalam. Setiap hembusan angin membawa rindu, setiap matahari terbenam mengingatkan akan kehangatan kasih. Bersamamu, hidupku terasa sempurna. Terima kasih telah menjadi bagian dari hidupku.</p>
+            <p>Dengan penuh rasa Cinta</p>
+            <p>Rheva Iqbal Abdillah</p>
+        </div>
+        <div class="section gallery">
+            <h2>Galeri Foto</h2>
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <img src="foto1.jpeg" class="img-fluid" alt="Foto Kenangan 1">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="foto2.jpeg" class="img-fluid" alt="Foto Kenangan 2">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="foto3.jpeg" class="img-fluid" alt="Foto Kenangan 3">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="foto5.jpeg" class="img-fluid" alt="Foto Kenangan 5">
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Pesan Pribadi</h2>
+            <p>Semoga cinta kita semakin utuh, tidak ada lagi pertengkaran diantara kita, hubungan kita semakin dewasa, sukses untuk kita kedepannya, Aamiin</p>
+            <h3>AKU TIDAK INGIN JADI TAMU UNDANGAN, MAKA KITA HARUS SELALU BERSAMA</h3>
+            <h1>I LOVE YOU SISKA ZALIANTI ❤️</h1>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        document.getElementById('anniversaryForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const date = document.getElementById('anniversaryDate').value;
+            document.getElementById('savedDate').textContent = 'Ini Tanggal kita jadian! : ' + date;
+
+            // Mengirim pesan WhatsApp
+            const phoneNumber = '+6282180996114';  // Ganti dengan nomor WhatsApp Anda (format internasional)
+            const message = `Tanggal hari jadi kita adalah: ${date}`;
+            window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`, '_blank');
+
+            // Menampilkan countdown
+            document.getElementById('countdownSection').style.display = 'block';
+            const anniversaryDate = new Date(date);
+            setInterval(function() {
+                const now = new Date();
+                const timeDiff = now - anniversaryDate;
+                const years = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365));
+                const months = Math.floor((timeDiff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+                const days = Math.floor((timeDiff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+                document.getElementById('countdown').textContent = `${years} tahun, ${months} bulan, ${days} hari, ${hours} jam, ${minutes} menit, ${seconds} detik`;
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
