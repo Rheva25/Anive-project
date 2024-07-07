@@ -179,38 +179,86 @@
             <h1>I LOVE YOU SISKA ZALIANTI ❤️</h1>
         </div>
     </div>
+
+    <audio id="backgroundMusic" loop>
+        <source src="nuansabening.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
-        // Countdown timer to previous anniversary on 28th July 2022
-        const anniversaryDate = new Date('2022-07-28');
-        setInterval(function() {
-            const now = new Date();
-            const timeDiff = now - anniversaryDate;
-            const years = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365));
-            const months = Math.floor((timeDiff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
-            const days = Math.floor((timeDiff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-            document.getElementById('timeSinceAnniversary').textContent = `${years} tahun, ${months} bulan, ${days} hari, ${hours} jam, ${minutes} menit, ${seconds} detik`;
-        }, 1000);
+        // Autoplay the music after user interaction
+        $(document).ready(function() {
+            var audio = document.getElementById('backgroundMusic');
+            var isPlaying = false;
 
-        // Countdown timer to next anniversary on 28th July every year
-        setInterval(function() {
-            const now = new Date();
-            let nextAnniversary = new Date(now.getFullYear(), 6, 28); // 28 Juli tahun ini
-            if (now > nextAnniversary) {
-                nextAnniversary = new Date(now.getFullYear() + 1, 6, 28); // 28 Juli tahun depan
+            function playAudio() {
+                if (!isPlaying) {
+                    audio.play();
+                    isPlaying = true;
+                }
             }
 
-            const timeDiff = nextAnniversary - now;
-            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+            // Play audio on first click anywhere on the document
+            $(document).one('click', function() {
+                playAudio();
+            });
 
-            document.getElementById('countdownToAnniversary').textContent = `${days} hari, ${hours} jam, ${minutes} menit, ${seconds} detik`;
-        }, 1000);
+            // Optional: Add a play button if the user doesn't click anywhere
+            setTimeout(function() {
+                if (!isPlaying) {
+                    var playButton = $('<button>Play Music</button>');
+                    playButton.css({
+                        position: 'fixed',
+                        bottom: '20px',
+                        right: '20px',
+                        padding: '10px 20px',
+                        fontSize: '16px',
+                        backgroundColor: '#00dffc',
+                        color: '#fff',
+                        border: 'none',
+                        borderRadius: '5px',
+                        cursor: 'pointer'
+                    });
+                    playButton.click(function() {
+                        playAudio();
+                        playButton.remove();
+                    });
+                    $('body').append(playButton);
+                }
+            }, 3000); // 3 seconds delay
+
+            // Timer to count time since last anniversary on 28th July 2022
+            const anniversaryDate = new Date('2022-07-28');
+            setInterval(function() {
+                const now = new Date();
+                const timeDiff = now - anniversaryDate;
+                const years = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365));
+                const months = Math.floor((timeDiff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+                const days = Math.floor((timeDiff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+                document.getElementById('timeSinceAnniversary').textContent = `${years} tahun, ${months} bulan, ${days} hari, ${hours} jam, ${minutes} menit, ${seconds} detik`;
+            }, 1000);
+
+            // Countdown timer to next anniversary on 28th July every year
+            setInterval(function() {
+                const now = new Date();
+                let nextAnniversary = new Date(now.getFullYear(), 6, 28); // 28 Juli tahun ini
+                if (now > nextAnniversary) {
+                    nextAnniversary = new Date(now.getFullYear() + 1, 6, 28); // 28 Juli tahun depan
+                }
+
+                const timeDiff = nextAnniversary - now;
+                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+                document.getElementById('countdownToAnniversary').textContent = `${days} hari, ${hours} jam, ${minutes} menit, ${seconds} detik`;
+            }, 1000);
+        });
     </script>
 </body>
 </html>
